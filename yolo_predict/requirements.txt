@@ -1,0 +1,5 @@
+ultralytics
+py-cpuinfo
+GPUtil
+psutil
+

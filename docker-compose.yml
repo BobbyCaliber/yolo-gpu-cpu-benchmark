@@ -1,0 +1,41 @@
+services:
+  yolo_predict:
+    build: ./yolo_predict
+    image: nvidia/cuda:12.6.3-runtime-ubuntu20.04
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
+    ports:
+      - "9000:9000"
+    volumes:
+      - /home/bobbycaliber44/docker_app:/app/data
+    container_name: yolo_predict
+
+  check_cpu_config:
+    build: ./check_cpu_config
+    image: python:3.10-slim
+    ports:
+      - "9001:9001"
+    volumes:
+      - /home/bobbycaliber44/docker_app:/app/data
+    container_name: check_cpu_config
+
+  check_gpu_config:
+    build: ./check_gpu_config
+    image: bryankp/pycuda:latest
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
+    ports:
+      - "9002:9002"
+    volumes:
+      - /home/bobbycaliber44/docker_app:/app/data
+    container_name: check_gpu_config
