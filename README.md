@@ -22,5 +22,5 @@ docker compose up --build yolo_predict
 #### If this error pops up when building then VPN is required:
 ![image](https://github.com/user-attachments/assets/16cc143e-ba8d-4957-be2d-50a347f5925e)
 
-#### * All three images are about 15 GB in sum
+#### * All three images are about 25 GB in sum
 #### * It is advised to not use PC when running containers
